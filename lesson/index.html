@@ -1393,7 +1393,7 @@ function pronInit(){
         var mx = (ax + bx)/2, my = down ? (ay + by)/2 : Math.min(ay, by) - 30;
         if(down) mx += 34;
         var p = document.createElementNS(ns, 'path'); p.setAttribute('d', 'M'+ax+' '+(ay-2)+' Q'+mx+' '+my+' '+bx+' '+(by-3)); p.setAttribute('pathLength', '1');
-        var t = document.createElementNS(ns, 'text'); t.setAttribute('x', mx); t.setAttribute('y', down ? my - 2 : my + 12); t.textContent = a[2];
+        var t = document.createElementNS(ns, 'text'); t.setAttribute('x', down ? mx + 34 : mx); t.setAttribute('y', down ? my + 4 : my + 12); t.textContent = a[2];
         svg.appendChild(p); svg.appendChild(t);
         if(G && !reduce){ p.style.strokeDasharray = 1; G.fromTo(p, {strokeDashoffset:1}, {strokeDashoffset:0, duration:.6, ease:'power2.out'}); G.fromTo(t, {scale:.4, transformOrigin:'50% 50%'}, {scale:1, duration:.5, delay:.35, ease:'back.out(3)'}); }
       }, reduce ? 0 : 760);
@@ -1550,7 +1550,7 @@ function pronInit(){
     var items = $$('.acc-i', acc), g = acc.closest('.acc-g'), tab = g && $('.tabw', g), img = tab && $('.tab-s.img img', tab), scs = tab ? $$('.tsc', tab) : [];
     function open(it){
       items.forEach(function(x){ var on = x === it; x.classList.toggle('on', on); $('.acc-b', x).setAttribute('aria-expanded', on); });
-      if(img && it.dataset.img){ img.src = '../media/' + it.dataset.img + '.webp'; pop(img, .96); }
+      if(img && it.dataset.img){ img.src = it.dataset.img; pop(img, .96); }
       if(scs.length){ scs.forEach(function(s, i){ s.classList.toggle('on', i === +it.dataset.sc); }); }
       place();
     }
