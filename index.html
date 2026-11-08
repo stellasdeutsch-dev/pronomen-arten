@@ -579,6 +579,78 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
 @media(max-width:640px){.foot{grid-template-columns:minmax(0,1fr)}}
 .rv{will-change:auto}
 @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*::before,*::after{animation:none!important;transition:none!important}}
+/* Topic visuals: inline SVG art with HTML labels, so labels keep their size on a phone. */
+.vz{margin-top:clamp(30px,4vw,52px);background:#fff;border-radius:22px;box-shadow:var(--sh);overflow:hidden;transition:box-shadow .25s}
+.vz:hover{box-shadow:var(--sh2)}
+.vz-stage{position:relative;aspect-ratio:1080/460;background:var(--pale)}
+.vz-stage>svg{position:absolute;inset:0;width:100%;height:100%;display:block}
+.vz figcaption{padding:16px clamp(18px,2.4vw,28px) 18px;color:var(--ink2);font-size:15px;line-height:1.4;text-align:center;text-wrap:pretty}
+.vz-at{position:absolute;left:var(--x);top:var(--y);translate:-50% -50%}
+.vz-no{width:clamp(42px,5vw,58px);height:clamp(42px,5vw,58px);border-radius:50%;display:grid;place-items:center;background:var(--navy);color:#fff;font-weight:900;font-size:clamp(22px,2.6vw,30px);line-height:1}
+.vz-bub{background:#fff;border-radius:16px;padding:8px 14px;font-weight:800;font-size:clamp(14px,1.4vw,18px);line-height:1.2;box-shadow:var(--sh);white-space:nowrap;text-align:center}
+.vz-bub::after{content:"";position:absolute;left:50%;bottom:-8px;margin-left:-8px;border:8px solid transparent;border-bottom:0;border-top-color:#fff}
+.vz-bub.bad{color:var(--red)}
+.vz-bub.blue{color:var(--blue)}
+.vz-float{animation:vzFloat 4.2s ease-in-out infinite alternate}
+.vz-float.b{animation-duration:5.4s}
+.vz-float.c{animation-duration:3.6s;animation-direction:alternate-reverse}
+@keyframes vzFloat{from{transform:translateY(-6px)}to{transform:translateY(6px)}}
+.vz-pill{display:inline-grid;place-items:center;min-height:30px;padding:3px 13px;border-radius:9px;font-weight:900;font-size:clamp(15px,1.5vw,19px);line-height:1.1;color:#fff;background:var(--blue);white-space:nowrap}
+.vz-pill.a{background:var(--akk)}
+.vz-pill.d{background:var(--dat);color:var(--ink)}
+/* mirror */
+.vz-mir{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:2px;background:var(--line)}
+.vz-mp{background:#fff;display:flex;flex-direction:column}
+.vz-mp .vz-stage{aspect-ratio:520/300}
+.vz-mp .cap{padding:14px clamp(14px,2vw,22px) 16px;text-align:center}
+.vz-mp .cap b{display:block;font-weight:900;font-size:clamp(17px,1.7vw,21px);line-height:1.25}
+.vz-mp .cap span{color:var(--mute);font-size:15px}
+/* relative pronoun: find the cell */
+.vz-rg{display:grid;grid-template-columns:minmax(0,1fr) 56px minmax(0,1.5fr) 56px minmax(0,1fr);align-items:center;gap:8px;padding:clamp(18px,2.6vw,30px)}
+.vz-rc{text-align:center;display:grid;justify-items:center;gap:6px}
+.vz-rc svg{width:100%;max-width:190px;height:auto;display:block}
+.vz-rc b{font-weight:900;font-size:clamp(20px,2vw,25px);line-height:1.15}
+.vz-rc small{font-size:14px;color:var(--mute);line-height:1.3}
+.vz-ar{width:56px;height:30px;display:block;color:var(--orange)}
+.vz-t{display:grid;grid-template-columns:minmax(56px,.9fr) repeat(4,minmax(0,1fr));gap:4px;font-size:clamp(14px,1.3vw,16px);font-weight:800;text-align:center}
+.vz-t>*{display:grid;place-items:center;min-height:40px;border-radius:9px;background:var(--pale2);line-height:1.1}
+.vz-t .h{background:transparent;color:var(--mute);font-size:14px}
+.vz-t .row{background:var(--dat);color:var(--ink)}
+.vz-t .col{background:#D6E2FB}
+.vz-t .hit{background:var(--blue);color:#fff;font-size:clamp(18px,1.8vw,22px)}
+.vz-sent{text-align:center;font-weight:900;font-size:clamp(21px,2.5vw,30px);line-height:1.25;padding:2px 16px 0}
+.vz-sent u{text-decoration:none;color:var(--blue)}
+/* faces */
+.vz-sv{position:absolute;width:0;height:0;overflow:hidden}
+.vz-fg{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:2px;background:var(--line)}
+.vz-fg.c4{grid-template-columns:repeat(4,minmax(0,1fr));margin-top:2px}
+.vz-f{background:#fff;display:flex;flex-direction:column}
+.vz-f svg{display:block;width:100%;height:auto;background:var(--pale)}
+.vz-f div{padding:12px 10px 14px;text-align:center;display:grid;gap:3px;justify-items:center}
+.vz-f b{font-weight:900;font-size:clamp(15px,1.5vw,18px);line-height:1.2}
+.vz-f b u{text-decoration:none;color:var(--akk)}
+.vz-f em{font-style:normal;font-weight:800;color:var(--blue);font-size:15px}
+@media(max-width:820px){
+  .vz-rg{grid-template-columns:minmax(0,1fr);justify-items:center}
+  .vz-rc{width:100%;grid-template-columns:96px minmax(0,1fr);text-align:left;justify-items:start;align-items:center;column-gap:14px}
+  .vz-rc svg{grid-row:span 2;width:96px}
+  .vz-rc b{align-self:end}
+  .vz-rc small{align-self:start}
+  .vz-ar{rotate:90deg}
+  .vz-ar.r{rotate:90deg}
+  .vz-t{width:100%}
+}
+@media(max-width:640px){
+  .vz-stage.sl{aspect-ratio:auto;height:280px}
+  .vz-at{left:var(--mx,var(--x));top:var(--my,var(--y))}
+  .vz-mir{grid-template-columns:minmax(0,1fr)}
+  .vz-fg.c4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .vz-f b{font-size:14px}
+  .vz-f div{padding:10px 6px 12px}
+}
+.vz-env{display:grid;place-items:center;width:clamp(116px,13vw,150px);height:clamp(72px,8.4vw,94px);background:#fff;border-radius:10px;box-shadow:var(--sh2);font-weight:900;font-size:clamp(20px,2.2vw,27px);color:var(--blue);line-height:1}
+.vz-env::before{content:"";position:absolute;left:0;right:0;top:0;height:42%;background:#D6E2FB;clip-path:polygon(0 0,100% 0,50% 100%);border-radius:10px 10px 0 0}
+.vz-st{position:absolute;top:8px;right:9px;width:18px;height:22px;background:var(--orange);border-radius:3px}
 </style>
 
 </head>
@@ -796,6 +868,70 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
       </div>
       <div class="arrows"><button class="arw" type="button" id="stPrev" aria-label="Предыдущий отзыв"><svg class="ic"><use href="#i-chevron-left"/></svg></button><button class="arw solid" type="button" id="stNext" aria-label="Следующий отзыв"><svg class="ic"><use href="#i-chevron-right"/></svg></button></div>
     </div>
+    <figure class="vz rv">
+      <div class="vz-stage sl">
+        <svg viewBox="0 0 1080 460" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Зал магистрата. У окна номер четыре чиновница сняла очки, перед ней посетитель с бумагами, за ним соседка по очереди">
+          <rect width="1080" height="460" fill="#EFF6FB"/>
+          <path d="M60 372V190a90 90 0 0 1 180 0v182zM850 372V170a100 100 0 0 1 200 0v202z" fill="#E1ECF8"/>
+          <rect y="372" width="1080" height="88" fill="#DFE7F1"/>
+          <rect y="364" width="1080" height="9" fill="#C8D6E8"/>
+          <!-- ticket machine and plant -->
+          <rect x="128" y="226" width="62" height="146" rx="10" fill="#1C2444"/><rect x="139" y="240" width="40" height="28" rx="5" fill="#DAD300"/><rect x="148" y="284" width="22" height="46" rx="3" fill="#fff"/>
+          <path d="M80 372l-10-60h56l-10 60z" fill="#CF4F06"/><path d="M98 316C70 278 62 250 72 220c24 18 30 54 26 96zM98 316c0-44 8-74 32-96 10 34-2 72-32 96zM98 316c-12-22-34-34-58-32 8 22 32 36 58 32z" fill="#22B996"/>
+          <!-- folder shelf -->
+          <rect x="884" y="180" width="170" height="10" rx="4" fill="#1C2444"/><rect x="884" y="268" width="170" height="10" rx="4" fill="#1C2444"/>
+          <g><rect x="896" y="126" width="24" height="54" rx="3" fill="#E8650E"/><rect x="924" y="118" width="24" height="62" rx="3" fill="#2C5FE6"/><rect x="952" y="130" width="24" height="50" rx="3" fill="#DAD300"/><rect x="980" y="120" width="24" height="60" rx="3" fill="#CF3B97"/><rect x="1008" y="128" width="24" height="52" rx="3" fill="#22B996"/><rect x="896" y="208" width="24" height="60" rx="3" fill="#4B28D6"/><rect x="924" y="216" width="24" height="52" rx="3" fill="#E5433D"/><rect x="952" y="204" width="24" height="64" rx="3" fill="#2C5FE6"/><rect x="980" y="214" width="24" height="54" rx="3" fill="#E8650E"/><rect x="1008" y="206" width="24" height="62" rx="3" fill="#DAD300"/></g>
+          <!-- neighbour in the queue -->
+          <g data-vi="pop" data-d=".1">
+            <path d="M270 460c0-132 18-190 54-200h24c36 10 54 68 54 200z" fill="#E8650E"/>
+            <circle cx="332" cy="186" r="54" fill="#8A4B2A"/><path d="M280 184c-16 64-14 112-6 140h116c8-28 10-76-6-140z" fill="#8A4B2A"/>
+            <rect x="316" y="222" width="32" height="42" fill="#E9AE8C"/>
+            <circle cx="332" cy="192" r="44" fill="#F3C9A8"/>
+            <path d="M288 188c-4-54 40-72 76-58 22 10 24 40 20 62-12-30-30-44-52-48-14 20-28 34-44 44z" fill="#6E3A1E"/>
+            <circle cx="350" cy="194" r="5.5" fill="#23232E"/><circle cx="318" cy="194" r="5.5" fill="#23232E"/>
+            <path d="M320 214c10 12 26 12 36 0" fill="none" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/>
+          </g>
+          <!-- me -->
+          <g data-vi="pop" data-d=".2">
+            <path d="M412 460c0-160 18-226 62-234h28c44 8 66 74 66 234z" fill="#2C5FE6"/>
+            <rect x="472" y="196" width="36" height="42" fill="#E9AE8C"/>
+            <circle cx="492" cy="166" r="48" fill="#F3C9A8"/>
+            <path d="M444 164c-8-62 92-76 100-8-20-24-68-30-100 8z" fill="#14171F"/>
+            <circle cx="514" cy="170" r="6" fill="#23232E"/><circle cx="480" cy="170" r="6" fill="#23232E"/>
+            <path d="M482 190c10 12 24 12 34 2" fill="none" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/>
+          </g>
+          <!-- window 4 -->
+          <rect x="598" y="104" width="214" height="208" rx="14" fill="#1C2444"/>
+          <rect x="612" y="118" width="186" height="194" rx="6" fill="#DDEBFA"/>
+          <path d="M628 312c0-64 18-92 58-98h36c40 6 58 34 58 98z" fill="#1C2444"/>
+          <rect x="688" y="194" width="34" height="34" fill="#E9AE8C"/>
+          <path d="M660 172c-10-68 100-70 92-2-14 2-30-2-46-18-12 14-30 20-46 20z" fill="#8A8F9E"/>
+          <circle cx="705" cy="130" r="17" fill="#8A8F9E"/>
+          <circle cx="705" cy="178" r="42" fill="#F3C9A8"/>
+          <path d="M664 170c2-30 34-42 62-34 18 6 26 22 22 40-16-2-30-10-42-24-12 12-26 18-42 18z" fill="#8A8F9E"/>
+          <circle cx="688" cy="182" r="5" fill="#23232E"/><circle cx="722" cy="182" r="5" fill="#23232E"/>
+          <path d="M676 168l20 6M734 168l-20 6" stroke="#23232E" stroke-width="4" stroke-linecap="round"/>
+          <path d="M694 204h24" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/>
+          <!-- glasses, already off and in her hand -->
+          <path d="M772 306v-46" stroke="#1C2444" stroke-width="20" stroke-linecap="round"/>
+          <circle cx="772" cy="250" r="13" fill="#F3C9A8"/>
+          <g data-vi="glass" data-d=".75" fill="none" stroke="#23232E" stroke-width="3.4"><circle cx="760" cy="222" r="11.5"/><circle cx="785" cy="222" r="11.5"/><path d="M771 220c2-2 3-2 3 0M772 236v8"/></g>
+          <!-- counter -->
+          <rect x="570" y="312" width="268" height="24" rx="8" fill="#0F3FC8"/>
+          <rect x="590" y="336" width="228" height="124" fill="#2C5FE6"/>
+          <rect x="612" y="362" width="184" height="72" rx="8" fill="#0F3FC8"/>
+          <g data-vi="pop" data-d=".35">
+            <path d="M552 276c18 8 30 16 46 22" fill="none" stroke="#2C5FE6" stroke-width="34" stroke-linecap="round"/>
+            <rect x="606" y="266" width="64" height="44" rx="4" fill="#fff" transform="rotate(-6 638 288)"/><path d="M616 278l44-5M617 288l44-5M618 298l28-3" stroke="#BFD0E6" stroke-width="3"/>
+            <circle cx="608" cy="302" r="16" fill="#F3C9A8"/>
+          </g>
+        </svg>
+        <span class="vz-at vz-no" style="--x:65.2%;--y:12%;--mx:78.5%;--my:12%" data-vi="pop" data-d=".3">4</span>
+        <span class="vz-at vz-bub bad" lang="de" style="--x:39.6%;--y:13%;--mx:24%;--my:10%" data-vi="pop" data-d=".55">wie geht es dir?</span>
+        <span class="vz-at vz-bub blue" lang="de" style="--x:80%;--y:13%;--mx:57%;--my:10%" data-vi="pop" data-d="1.35">wie bitte?</span>
+      </div>
+      <figcaption>Окно номер четыре. Я сказал <span class="de" lang="de">dir</span>. Фрау сняла очки.</figcaption>
+    </figure>
     <div class="punch rv">
       <h3>Карточку выдали. <em>Достоинство нет.</em> Оба раза нужно было одно слово.</h3>
       <div class="fix">
@@ -938,6 +1074,54 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
       </div>
     </div>
 
+    <figure class="vz rv">
+      <div class="vz-mir">
+        <div class="vz-mp">
+          <div class="vz-stage">
+          <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="520" height="300" fill="#EFF6FB"/>
+            <g fill="none" stroke="#DCE8F4" stroke-width="2"><path d="M0 60h520M0 120h520M0 180h520M0 240h520M65 0v300M130 0v300M195 0v300M260 0v300M325 0v300M390 0v300M455 0v300"/></g>
+            <rect x="266" y="14" width="240" height="228" rx="110" fill="#1C2444"/>
+            <rect x="278" y="26" width="216" height="204" rx="100" fill="#DDEBFA"/>
+            <g data-vi="right" data-d=".35"><clipPath id="vzMa"><rect x="278" y="26" width="216" height="204" rx="100"/></clipPath><g clip-path="url(#vzMa)"><g transform="translate(386 34)"><path d="M-66 266c0-96 14-128 54-136h24c40 8 54 40 54 136z" fill="#CF4F06"/><rect x="-16" y="98" width="32" height="38" fill="#E9AE8C"/><circle cy="72" r="44" fill="#F3C9A8"/><path d="M-44 70c-6-58 84-70 90-8-18-22-62-28-90 8z" fill="#14171F"/><circle cx="16" cy="76" r="5.4" fill="#23232E"/><circle cx="-16" cy="76" r="5.4" fill="#23232E"/><path d="M-8 94c8 8 16 8 22 0" fill="none" stroke="#C4574C" stroke-width="3.6" stroke-linecap="round"/></g></g></g>
+            <rect x="176" y="262" width="340" height="38" rx="8" fill="#D6E2FB"/>
+            <rect x="176" y="256" width="340" height="12" rx="6" fill="#2C5FE6"/>
+            
+            <rect x="186" y="194" width="52" height="12" rx="6" fill="#1C2444"/>
+            <rect x="228" y="194" width="10" height="70" rx="5" fill="#1C2444"/>
+            <g transform="translate(112 0)"><path d="M-74 300c0-100 16-132 58-140h28c42 8 60 40 60 140z" fill="#2C5FE6"/><rect x="-18" y="126" width="36" height="42" fill="#E9AE8C"/><circle cy="98" r="50" fill="#F3C9A8"/><path d="M-50 96c-8-66 94-78 100-9-20-24-70-32-100 9z" fill="#14171F"/><circle cx="20" cy="102" r="6" fill="#23232E"/><circle cx="-16" cy="102" r="6" fill="#23232E"/><path d="M-8 122c9 9 18 9 24 0" fill="none" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/></g>
+            <g fill="#fff" stroke="#8ECDF0" stroke-width="3"><circle class="vz-float" cx="78" cy="170" r="12"/><circle class="vz-float b" cx="194" cy="150" r="9"/><circle class="vz-float c" cx="52" cy="110" r="8"/><circle class="vz-float" cx="210" cy="96" r="7"/><circle class="vz-float b" cx="96" cy="206" r="7"/></g>
+          </svg>
+          <span class="vz-at vz-pill" lang="de" style="--x:21.5%;--y:9%">ich</span>
+          <span class="vz-at vz-pill a" lang="de" style="--x:74%;--y:9%" data-vi="pop" data-d=".8">mich</span>
+          </div>
+          <div class="cap"><b lang="de" class="de">Ich wasche mich.</b><span>Я моюсь.</span></div>
+        </div>
+        <div class="vz-mp">
+          <div class="vz-stage">
+          <svg viewBox="0 0 520 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+            <rect width="520" height="300" fill="#EFF6FB"/>
+            <g fill="none" stroke="#DCE8F4" stroke-width="2"><path d="M0 60h520M0 120h520M0 180h520M0 240h520M65 0v300M130 0v300M195 0v300M260 0v300M325 0v300M390 0v300M455 0v300"/></g>
+            <rect x="266" y="14" width="240" height="228" rx="110" fill="#1C2444"/>
+            <rect x="278" y="26" width="216" height="204" rx="100" fill="#DDEBFA"/>
+            <g data-vi="right" data-d=".35"><clipPath id="vzMd"><rect x="278" y="26" width="216" height="204" rx="100"/></clipPath><g clip-path="url(#vzMd)"><g transform="translate(386 34)"><path d="M-66 266c0-96 14-128 54-136h24c40 8 54 40 54 136z" fill="#DAD300"/><rect x="-16" y="98" width="32" height="38" fill="#E9AE8C"/><circle cy="72" r="44" fill="#F3C9A8"/><path d="M-44 70c-6-58 84-70 90-8-18-22-62-28-90 8z" fill="#14171F"/><circle cx="16" cy="76" r="5.4" fill="#23232E"/><circle cx="-16" cy="76" r="5.4" fill="#23232E"/><path d="M-8 94c8 8 16 8 22 0" fill="none" stroke="#C4574C" stroke-width="3.6" stroke-linecap="round"/></g></g></g>
+            <rect x="176" y="262" width="340" height="38" rx="8" fill="#D6E2FB"/>
+            <rect x="176" y="256" width="340" height="12" rx="6" fill="#2C5FE6"/>
+            <g data-vi="pop" data-d=".6"><path d="M198 208v18" fill="none" stroke="#8ECDF0" stroke-width="10" stroke-linecap="round"/><g fill="#8ECDF0"><circle cx="176" cy="246" r="4"/><circle cx="222" cy="244" r="4"/></g></g>
+            <rect x="186" y="194" width="52" height="12" rx="6" fill="#1C2444"/>
+            <rect x="228" y="194" width="10" height="70" rx="5" fill="#1C2444"/>
+            <g transform="translate(112 0)"><path d="M-74 300c0-100 16-132 58-140h28c42 8 60 40 60 140z" fill="#2C5FE6"/><rect x="-18" y="126" width="36" height="42" fill="#E9AE8C"/><circle cy="98" r="50" fill="#F3C9A8"/><path d="M-50 96c-8-66 94-78 100-9-20-24-70-32-100 9z" fill="#14171F"/><circle cx="20" cy="102" r="6" fill="#23232E"/><circle cx="-16" cy="102" r="6" fill="#23232E"/><path d="M-8 122c9 9 18 9 24 0" fill="none" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/></g>
+            <path d="M152 226c10 4 20 6 30 6" fill="none" stroke="#2C5FE6" stroke-width="26" stroke-linecap="round"/><g fill="#F3C9A8"><circle cx="190" cy="234" r="15"/><circle cx="206" cy="238" r="13"/></g>
+          </svg>
+          <span class="vz-at vz-pill" lang="de" style="--x:21.5%;--y:9%">ich</span>
+          <span class="vz-at vz-pill d" lang="de" style="--x:74%;--y:9%" data-vi="pop" data-d=".8">mir</span>
+          <span class="vz-at vz-pill a" lang="de" style="--x:39%;--y:56%" data-vi="pop" data-d="1.1">die Hände</span>
+          </div>
+          <div class="cap"><b lang="de" class="de">Ich wasche mir die Hände.</b><span>Я мою руки.</span></div>
+        </div>
+      </div>
+      <figcaption>Появилось ещё одно дополнение, и зеркало переходит в Dativ.</figcaption>
+    </figure>
     <div class="fam-h"><h2>Притяжательные: <em>собери фразу</em> сама</h2><p class="sub">Основа зависит от хозяйки. Окончание зависит от вещи и падежа.</p></div>
     <div class="two">
       <div class="card bld" id="poss">
@@ -970,6 +1154,31 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
         <div class="st"><p>Глагол уходит в самый конец. Придаточное любит порядок.</p></div>
       </div>
     </div>
+    <figure class="vz rv">
+      <div class="vz-rg">
+        <div class="vz-rc" data-vi="left" data-d=".05">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><path d="M24 200V96a76 76 0 0 1 152 0v104z" fill="#D6E2FB"/><path d="M52 200c0-52 12-70 40-74h18c30 4 40 22 40 74z" fill="#CF3B97"/><path d="M72 76c-12 36-10 52-4 66h66c6-14 8-30-4-66-8-30-50-30-58 0z" fill="#8A4B2A"/><rect x="88" y="104" width="26" height="28" fill="#E9AE8C"/><circle cx="101" cy="82" r="34" fill="#F3C9A8"/><path d="M68 80c-4-44 32-54 60-44 16 8 18 30 14 46-10-22-24-32-42-34-10 16-20 26-32 32z" fill="#6E3A1E"/><circle cx="114" cy="84" r="4.5" fill="#23232E"/><circle cx="90" cy="84" r="4.5" fill="#23232E"/><path d="M92 100c7 8 16 8 22 0" fill="none" stroke="#C4574C" stroke-width="3.4" stroke-linecap="round"/></svg>
+          <b lang="de" class="de">die Frau</b>
+          <small>род слева: столбец <span class="de" lang="de">die</span></small>
+        </div>
+        <svg class="vz-ar" viewBox="0 0 56 30" aria-hidden="true" data-vi="left" data-d=".3"><path d="M2 15h48M36 3l14 12-14 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="vz-t" lang="de">
+          <span class="h"></span><span class="h">der</span><span class="h">die</span><span class="h">das</span><span class="h">мн. ч.</span>
+          <span class="h">Nom</span><span>der</span><span class="col">die</span><span>das</span><span>die</span>
+          <span class="h">Akk</span><span>den</span><span class="col">die</span><span>das</span><span>die</span>
+          <span class="h">Dat</span><span class="row">dem</span><span class="hit" data-vi="pop" data-d="1.15">der</span><span class="row">dem</span><span class="row">denen</span>
+          <span class="h">Gen</span><span>dessen</span><span class="col">deren</span><span>dessen</span><span>deren</span>
+        </div>
+        <svg class="vz-ar r" viewBox="0 0 56 30" aria-hidden="true" data-vi="right" data-d=".7"><path d="M54 15H6M20 3L6 15l14 12" fill="none" stroke="currentColor" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <div class="vz-rc" data-vi="right" data-d=".5">
+          <svg viewBox="0 0 200 200" aria-hidden="true"><path d="M24 200V96a76 76 0 0 1 152 0v104z" fill="#F4F2B4"/><path d="M50 200c0-52 12-70 40-74h18c30 4 40 22 40 74z" fill="#2C5FE6"/><rect x="84" y="104" width="28" height="28" fill="#E9AE8C"/><circle cx="98" cy="82" r="34" fill="#F3C9A8"/><path d="M64 80c-6-46 66-54 70-6-14-16-48-22-70 6z" fill="#14171F"/><circle cx="112" cy="84" r="4.5" fill="#23232E"/><circle cx="86" cy="84" r="4.5" fill="#23232E"/><path d="M90 100c7 7 15 7 21 0" fill="none" stroke="#C4574C" stroke-width="3.4" stroke-linecap="round"/><path d="M138 150c10-4 18-8 26-16" fill="none" stroke="#2C5FE6" stroke-width="20" stroke-linecap="round"/><circle cx="168" cy="130" r="11" fill="#F3C9A8"/><path d="M168 122l4-30" stroke="#22B996" stroke-width="5" stroke-linecap="round"/><g fill="#E5433D"><circle cx="164" cy="82" r="9"/><circle cx="182" cy="82" r="9"/><circle cx="173" cy="68" r="9"/></g><circle cx="173" cy="80" r="6" fill="#DAD300"/></svg>
+          <b lang="de" class="de">ich danke</b>
+          <small>падеж своей половины: строка <span class="de" lang="de">Dativ</span></small>
+        </div>
+      </div>
+      <p class="vz-sent de" lang="de">Die Frau, <u>der</u> ich danke.</p>
+      <figcaption>Столбец даёт сосед слева. Строку даёт своя половина. На пересечении ответ.</figcaption>
+    </figure>
     <div class="two">
       <div class="card">
         <h3>Форма: род слева, падеж <em>своей половины</em></h3>
@@ -1128,6 +1337,26 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
           <div><span>Die Kinder und ihr Hund.</span><em lang="ru">их</em><button class="say" type="button" data-say="Die Kinder und ihr Hund." aria-label="Послушать по-немецки"><svg class="ic"><use href="#i-volume-2"/></svg></button></div>
         </div></div>
     </div>
+    <figure class="vz rv">
+      <svg class="vz-sv" aria-hidden="true">
+        <symbol id="vz-w" viewBox="0 0 120 150"><path d="M22 150c0-42 10-58 32-62h12c24 4 34 20 34 62z" fill="var(--t,#CF3B97)"/><path d="M38 58c-10 30-8 44-4 56h52c6-12 8-26-4-56-6-24-38-24-44 0z" fill="var(--h,#8A4B2A)"/><rect x="50" y="78" width="20" height="24" fill="#E9AE8C"/><circle cx="60" cy="58" r="27" fill="#F3C9A8"/><path d="M34 56c-3-34 25-42 47-34 12 6 14 22 11 36-8-18-19-25-33-27-8 13-16 20-25 25z" fill="var(--h2,#6E3A1E)"/><circle cx="70" cy="60" r="3.6" fill="#23232E"/><circle cx="51" cy="60" r="3.6" fill="#23232E"/><path d="M53 73c5 6 12 6 17 0" fill="none" stroke="#C4574C" stroke-width="2.8" stroke-linecap="round"/><g style="display:var(--gl,none)" fill="none" stroke="#23232E" stroke-width="2.4"><circle cx="51" cy="60" r="10"/><circle cx="70" cy="60" r="10"/><path d="M61 58c2-2 3-2 0 0"/></g></symbol>
+        <symbol id="vz-m" viewBox="0 0 120 150"><path d="M18 150c0-44 12-60 36-64h14c26 4 36 20 36 64z" fill="var(--t,#2C5FE6)"/><rect x="48" y="74" width="24" height="26" fill="#E9AE8C"/><circle cx="60" cy="54" r="29" fill="#F3C9A8"/><path d="M30 52c-5-40 58-48 61-6-13-14-42-20-61 6z" fill="var(--h,#14171F)"/><circle cx="72" cy="56" r="3.8" fill="#23232E"/><circle cx="50" cy="56" r="3.8" fill="#23232E"/><path d="M53 70c6 6 12 6 17 0" fill="none" stroke="#C4574C" stroke-width="2.8" stroke-linecap="round"/></symbol>
+        <symbol id="vz-k" viewBox="0 0 120 120"><path d="M32 120c0-30 8-40 24-44h10c16 4 26 14 26 44z" fill="var(--t,#22B996)"/><rect x="51" y="64" width="18" height="16" fill="#E9AE8C"/><circle cx="60" cy="48" r="24" fill="#F3C9A8"/><path d="M36 48c-4-34 48-40 50-4-12-12-32-18-50 4z" fill="var(--h,#D9A95B)"/><circle cx="70" cy="50" r="3.4" fill="#23232E"/><circle cx="51" cy="50" r="3.4" fill="#23232E"/><path d="M53 62c5 5 11 5 15 0" fill="none" stroke="#C4574C" stroke-width="2.6" stroke-linecap="round"/></symbol>
+        <symbol id="vz-d" viewBox="0 0 120 90"><path d="M22 54c-10-14-14-26-10-36 10 4 18 12 22 24z" fill="#8A5A34"/><rect x="22" y="38" width="72" height="30" rx="14" fill="#B57A45"/><rect x="26" y="60" width="11" height="28" rx="5" fill="#8A5A34"/><rect x="42" y="60" width="11" height="28" rx="5" fill="#8A5A34"/><rect x="66" y="60" width="11" height="28" rx="5" fill="#8A5A34"/><rect x="80" y="60" width="11" height="28" rx="5" fill="#8A5A34"/><circle cx="96" cy="32" r="20" fill="#B57A45"/><path d="M90 16c-10 2-16 12-14 26 8-2 16-12 14-26z" fill="#8A5A34"/><circle cx="104" cy="30" r="3.4" fill="#23232E"/><ellipse cx="114" cy="38" rx="4.6" ry="3.6" fill="#23232E"/></symbol>
+      </svg>
+      <div class="vz-fg">
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><path d="M60 160V78a60 60 0 0 1 120 0v82z" fill="#D6E2FB"/><use href="#vz-w" x="60" y="26" width="120" height="134" data-vi="pop"/></svg><div><b class="de" lang="de">sie komm<u>t</u></b><em>она</em></div></div>
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><path d="M30 160V100a90 74 0 0 1 180 0v60z" fill="#F4F2B4"/><use href="#vz-w" x="16" y="52" width="96" height="108" style="--t:#22B996;--h:#23232E;--h2:#34343F"/><use href="#vz-m" x="128" y="52" width="96" height="108" style="--t:#4B28D6;--h:#8A5A34"/><use href="#vz-w" x="72" y="34" width="96" height="126" style="--t:#E8650E;--h:#D9A95B;--h2:#E6BC72"/></svg><div><b class="de" lang="de">sie komm<u>en</u></b><em>они</em></div></div>
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><rect width="240" height="160" fill="#E1ECF8"/><rect x="52" y="14" width="136" height="130" rx="10" fill="#1C2444"/><rect x="62" y="24" width="116" height="120" rx="5" fill="#DDEBFA"/><use href="#vz-w" x="64" y="34" width="112" height="110" style="--t:#1C2444;--h:#8A8F9E;--h2:#8A8F9E;--gl:inline"/><rect x="30" y="144" width="180" height="16" rx="5" fill="#2C5FE6"/></svg><div><b class="de" lang="de"><u>S</u>ie komm<u>en</u></b><em>Вы</em></div></div>
+      </div>
+      <div class="vz-fg c4">
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><use href="#vz-m" x="32" y="52" width="96" height="108" style="--t:#E5433D;--h:#6E4629"/><use href="#vz-w" x="112" y="52" width="96" height="108" style="--t:#2C5FE6;--h:#23232E;--h2:#34343F"/><circle cx="196" cy="42" r="26" fill="#fff" stroke="#1C2444" stroke-width="5"/><path d="M196 26v17l11 7" fill="none" stroke="#E5433D" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/></svg><div><b class="de" lang="de"><u>Ihr</u> kommt spät.</b><em>вы</em></div></div>
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><use href="#vz-m" x="16" y="48" width="100" height="112"/><use href="#vz-w" x="132" y="48" width="100" height="112" style="--t:#22B996"/><rect x="92" y="96" width="62" height="44" rx="5" fill="#E8650E"/><path d="M92 112h62M123 96v44" stroke="#CF4F06" stroke-width="3"/></svg><div><b class="de" lang="de">Ich helfe <u>ihr</u>.</b><em>ей</em></div></div>
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><path d="M34 160V94a80 70 0 0 1 160 0v66z" fill="#D6E2FB"/><use href="#vz-w" x="24" y="40" width="108" height="120" style="--t:#E8650E;--h:#23232E;--h2:#34343F"/><use href="#vz-d" x="118" y="94" width="104" height="66"/></svg><div><b class="de" lang="de">Anna und <u>ihr</u> Hund.</b><em>её</em></div></div>
+        <div class="vz-f"><svg viewBox="0 0 240 160" aria-hidden="true"><use href="#vz-k" x="-6" y="62" width="98" height="98"/><use href="#vz-k" x="62" y="62" width="98" height="98" style="--t:#CF3B97;--h:#6E3A1E"/><use href="#vz-d" x="140" y="96" width="98" height="64"/></svg><div><b class="de" lang="de">Die Kinder und <u>ihr</u> Hund.</b><em>их</em></div></div>
+      </div>
+      <figcaption>Три лица у <span class="de" lang="de">sie</span>, четыре у <span class="de" lang="de">ihr</span>. Узнаёшь по глаголу, большой букве и соседям.</figcaption>
+    </figure>
     <div class="traps">
       <div class="trap"><b lang="de">man</b><p>В других падежах это <span class="de" lang="de">einen</span> и <span class="de" lang="de">einem</span>.</p></div>
       <div class="trap"><b lang="de">alle / alles</b><p>В Dativ <span class="de" lang="de">allen</span> и <span class="de" lang="de">allem</span>. Легко спутать.</p></div>
@@ -1143,6 +1372,37 @@ footer{background:var(--pale);padding-block:clamp(30px,4vw,48px) calc(clamp(30px
     <h2 style="text-align:center">Напиши <em>письмо</em> фрау из окна</h2>
     <p class="sub mt" style="text-align:center;margin-inline:auto">Шесть пропусков. Шанс всё исправить.</p>
     <div class="letter" id="letter"></div>
+    <figure class="vz rv">
+      <div class="vz-stage sl">
+        <svg viewBox="0 0 1080 460" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Конверт летит от письменного стола к окну номер четыре, чиновница снова в очках">
+          <rect width="1080" height="460" fill="#EFF6FB"/>
+          <path d="M60 372V190a90 90 0 0 1 180 0v182zM850 372V170a100 100 0 0 1 200 0v202z" fill="#E1ECF8"/>
+          <rect y="372" width="1080" height="88" fill="#DFE7F1"/><rect y="364" width="1080" height="9" fill="#C8D6E8"/>
+          <!-- desk with paper -->
+          <rect x="258" y="300" width="256" height="18" rx="7" fill="#1C2444"/><path d="M286 318l-14 142M486 318l14 142" stroke="#1C2444" stroke-width="14" stroke-linecap="round"/>
+          <rect x="326" y="280" width="120" height="20" rx="3" fill="#fff"/><path d="M340 290h60" stroke="#BFD0E6" stroke-width="4"/>
+          <g transform="rotate(32 462 250)"><rect x="456" y="214" width="12" height="72" rx="3" fill="#E8650E"/><path d="M456 286h12l-6 16z" fill="#14171F"/></g>
+          <rect x="296" y="262" width="26" height="38" rx="4" fill="#CF3B97"/><path d="M322 270c14 0 14 18 0 18" fill="none" stroke="#CF3B97" stroke-width="4"/>
+          <!-- flight path -->
+          <path d="M392 262C430 118 540 86 650 132" fill="none" stroke="#2C5FE6" stroke-width="5" stroke-linecap="round" stroke-dasharray="2 14"/>
+          <!-- window 4 -->
+          <rect x="598" y="104" width="214" height="208" rx="14" fill="#1C2444"/>
+          <rect x="612" y="118" width="186" height="194" rx="6" fill="#DDEBFA"/>
+          <path d="M628 312c0-64 18-92 58-98h36c40 6 58 34 58 98z" fill="#1C2444"/>
+          <rect x="688" y="194" width="34" height="34" fill="#E9AE8C"/>
+          <path d="M660 172c-10-68 100-70 92-2-14 2-30-2-46-18-12 14-30 20-46 20z" fill="#8A8F9E"/><circle cx="705" cy="130" r="17" fill="#8A8F9E"/>
+          <circle cx="705" cy="178" r="42" fill="#F3C9A8"/>
+          <path d="M664 170c2-30 34-42 62-34 18 6 26 22 22 40-16-2-30-10-42-24-12 12-26 18-42 18z" fill="#8A8F9E"/>
+          <circle cx="688" cy="182" r="5" fill="#23232E"/><circle cx="722" cy="182" r="5" fill="#23232E"/>
+          <path d="M692 202c8 9 20 9 26 0" fill="none" stroke="#C4574C" stroke-width="4" stroke-linecap="round"/>
+          <g fill="none" stroke="#23232E" stroke-width="3.4"><circle cx="688" cy="182" r="16"/><circle cx="722" cy="182" r="16"/><path d="M704 180c3-3 5-3 2 0"/></g>
+          <rect x="570" y="312" width="268" height="24" rx="8" fill="#0F3FC8"/><rect x="590" y="336" width="228" height="124" fill="#2C5FE6"/><rect x="612" y="362" width="184" height="72" rx="8" fill="#0F3FC8"/>
+        </svg>
+        <span class="vz-at vz-no" style="--x:65.2%;--y:12%;--mx:78.5%;--my:12%">4</span>
+        <span class="vz-at vz-env vz-float" lang="de" style="--x:42%;--y:30%;--mx:30%;--my:30%" data-vi="left" data-d=".2"><span class="vz-st"></span>Ihnen</span>
+      </div>
+      <figcaption>Шанс всё исправить. В этом письме уже <span class="de" lang="de">Ihnen</span>.</figcaption>
+    </figure>
   </div>
 </section>
 
@@ -1891,6 +2151,20 @@ function pronInit(){
     new IntersectionObserver(function(es){ es.forEach(function(en){ atPrice = en.isIntersecting; upd(); }); }).observe(priceSec);
   }
 
+  if(G && !reduce){
+    var vzFrom = {pop:{scale:.55, y:12, duration:.55, ease:'back.out(2.2)'}, up:{y:46, duration:.7, ease:'power3.out'}, left:{x:-70, duration:.75, ease:'power3.out'}, right:{x:70, duration:.75, ease:'power3.out'}, glass:{x:-72, y:-40, rotation:12, duration:.8, ease:'power2.inOut'}};
+    $$('.vz').forEach(function(v){
+      var parts = $$('[data-vi]', v);
+      ScrollTrigger.create({trigger:v, start:'top 80%', once:true, onEnter:function(){
+        parts.forEach(function(el, i){
+          var p = vzFrom[el.dataset.vi], o = {}; for(var k in p) o[k] = p[k];
+          o.delay = el.dataset.d ? +el.dataset.d : i * .1;
+          o.transformOrigin = '50% 100%';
+          G.from(el, o);
+        });
+      }});
+    });
+  }
   if(G){ addEventListener('load', function(){ ScrollTrigger.refresh(); }); if(document.fonts && document.fonts.ready) document.fonts.ready.then(function(){ ScrollTrigger.refresh(); }); }
 }
 if(document.readyState === 'loading') document.addEventListener('DOMContentLoaded', pronInit); else pronInit();
